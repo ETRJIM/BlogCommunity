@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="centerstage">
+    <h1>Blog Posts</h1>
+    <br>
+    {% if blogpost_list %}
+        {% for post in blogpost_list %}
+            <h2><a href="{% url 'blogpost_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <h3>By: {{ post.author }}</h3>
+            <p>Published on: {{ post.published_date|date:"D M Y" }}</p>
+            <a href="{% url 'blogpost_detail' pk=post.pk %}">
+                {% if post.approve.count > 0 %}
+                    Comments: {{ post.approve.count}}
+                {% else %}
+                    Comments
+                {% endif %}
+            </a>
+        {% endfor %}
+    {% else %}
+        <h2>No posts available</h2>
+    {% endif %}
+</div>
+{% endblock content %}
