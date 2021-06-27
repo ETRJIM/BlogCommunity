@@ -1,1 +1,1 @@
-web:gunicorn BlogCommunity.wsgi -b 0.0.0.0:$PORT -w 10
+web: gunicorn BlogCommunity.wsgi -b 0.0.0.0:$PORT -w 10
